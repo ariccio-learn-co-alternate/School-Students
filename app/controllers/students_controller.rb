@@ -4,10 +4,11 @@ class StudentsController < ApplicationController
   end
 
   def new
-
+    
   end
 
   def edit
+    @student = Student.find(params[:id])
   end
 
   def destroy
@@ -23,6 +24,13 @@ class StudentsController < ApplicationController
     # byebug
     @student = @school.student.create!(student_params(params))
     redirect_to student_path(@student)
+  end
+
+  def update
+    @student = Student.find(params[:id])
+    @student.update!(student_params(params))
+    redirect_to student_path(@student)
+
   end
 
   def student_params(params)

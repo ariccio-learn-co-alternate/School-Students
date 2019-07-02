@@ -1,0 +1,12 @@
+<h1><%=@student.name%></h1>
+
+<%=form_for(@student) do |f|%>
+    <%=f.label :name%>
+    <%=f.text_field :name%>
+
+    <%=f.label :age%>
+    <%=f.number_field :age%>
+    <%=select_tag 'school_id', options_from_collection_for_select(School.all, 'id', 'name')%>
+    <%=submit_tag 'Submit changes'%>
+
+<%end%>
