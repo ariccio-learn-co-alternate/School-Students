@@ -1,0 +1,18 @@
+<h1>Create Student</h1>
+
+<p>Please fill in the student's information:</p>
+
+<%=form_tag '/students', method: :post do%>
+    <%=text_field_tag 'student[name]'%>
+    <%=number_field_tag 'student[age]', 0%>
+    <%=select_tag 'school_id', options_from_collection_for_select(School.all, 'id', 'name')%>
+        <%
+=begin%>
+ <%School.all.each do |school|%>
+            <option label="<%=school.name%>" value="<%=school.id%>"></option>
+        <%end%>
+    </datalist> 
+<%
+=end%>
+    <%=submit_tag 'Create Student'%>
+<%end%>

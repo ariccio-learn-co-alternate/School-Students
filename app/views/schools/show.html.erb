@@ -1,2 +1,9 @@
-<h1>School#show</h1>
-<p>Find me in app/views/school/show.html.erb</p>
+<h1><%=@school.name%></h1>
+<p><%=@school.address%></p>
+
+<p> Students </p>
+
+<%@school.student.all.each_with_index do |student, i|%>
+    <%=i%>: <%=link_to student.name, student_path(student)%> --- or delete: <%=form_tag "/schools/#{@school.id}/delete_student/#{student.id}", method: :delete do%><%=submit_tag 'delete student', data: {confirm: "Are you sure you want to delete #{student.name} from #{@school.name}?"}%><%end%>
+    <br>
+<%end%>
